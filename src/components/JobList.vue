@@ -39,7 +39,7 @@ export default {
           id: 3,
           name: 'Add Team members',
           category: 'Candidates',
-          description: 'Add a selected team member',
+          description: 'Add a selected team member bjb',
         },
          {
           id: 4,

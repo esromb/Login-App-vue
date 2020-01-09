@@ -14,12 +14,13 @@
     <div class="navbar-start">
       <router-link to="/" class="navbar-item">Home</router-link>
       <router-link to="/about" class="navbar-item">About</router-link>
+      <router-link to="/Users" class="navbar-item">Users</router-link>
     </div>
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-dark">
-            <strong>Sign In</strong>
+          <a class="button is-dark" href="/">
+            <strong>Logout</strong>
           </a>
         </div>
       </div>
