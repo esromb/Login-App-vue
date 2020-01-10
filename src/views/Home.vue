@@ -12,6 +12,8 @@
       </div>
     </div>
   </section>
+      <router-link to="/Users" class="navbar-item">Users</router-link>
+      <router-link to="/UserData" class="navbar-item">Add a team member</router-link>
 </div>
 </template>
 <script>
@@ -23,43 +25,40 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .hero {  
-    text-align: center;
-   
-    background-size: cover;
+  .card {
+    height: 200px;
     background-position: center;
-    background-repeat: no-repeat;
-    height: 400px;
-  }
-  .hero-body .title {
-    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.6);
-    padding: 40px 0 20px 0;
-    font-size: 60px;
-  }
-  .subtitle {
-    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.7);
-    font-size: 30px;
-  }
-  .button-block {
+    background-size: cover;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
+  }
+  .card-content {
+    padding-top: 50px;
     position: absolute;
-    bottom: -150px;
-    .button {
-      margin-right: 50px;
-      padding-left: 50px;
-      padding-right: 50px;
+    color: #FFF;
+    background-color: rgba(0, 0, 0, 0.35);
+    top: 0;
+    padding: 10px;
+    height: 200px;
+    width: 100%;
+    span {
+      font-size: 18px;
+      text-align: center;
+      width: 100%;
+      position: absolute;
+      bottom: 10px;
+      right: 0;
     }
-    .welcome {
-      width: 400px;
-      padding: 10px;
-      margin-left: auto;
-      margin-right: auto;
+    h2 {
+      margin-top: 10px;
     }
   }
-  .is-xl {
-    font-size: 1.7rem;
+  .event-date {
+    background-color: #151515;
+    color: #FFF;
+    font-size: .75em;
+    padding: 2px 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 </style>
