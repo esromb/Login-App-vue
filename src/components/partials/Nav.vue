@@ -15,13 +15,20 @@
       <router-link to="/" class="navbar-item">Home</router-link>
       <router-link to="/about" class="navbar-item">About</router-link>
       <router-link to="/Users" class="navbar-item">Users</router-link>
+         <router-link to="/UserData" class="navbar-item">Add a team member</router-link>
     </div>
     <div class="navbar-end">
       <div class="navbar-item">
-        <div class="buttons">
+        <div v-if="logged" class="buttons">
           <a class="button is-dark" href="/">
             <strong>Logout</strong>
           </a>
+        </div>
+        <div v-if="!logged" class="buttons">
+         <router-link :to="'/login'">
+          <strong>Login</strong>
+        </router-link>
+
         </div>
       </div>
     </div>

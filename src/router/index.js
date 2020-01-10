@@ -27,6 +27,11 @@ export default new Router({
       path: '/users',
       name: 'Users',
       component: () => import('../views/Users.vue')
+    },
+    {
+      path: '/userData',
+      name: 'UserData',
+      component: () => import('../views/CreateTeamMember.vue')
     }
   ]
 })
