@@ -12,15 +12,13 @@
       </div>
     </div>
   </section>
-   <EventsList />
 </div>
 </template>
 <script>
-import EventsList from '../components/JobList';
 export default {
   name: 'home',
   components: {
-    EventsList
+    
   }
 }
 </script>
