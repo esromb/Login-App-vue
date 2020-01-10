@@ -15,6 +15,7 @@
       <router-link to="/" class="navbar-item">Home</router-link>
       <router-link to="/about" class="navbar-item">About</router-link>
       <router-link to="/Users" class="navbar-item">Users</router-link>
+         <router-link to="/UserData" class="navbar-item">Add a team member</router-link>
     </div>
     <div class="navbar-end">
       <div class="navbar-item">
