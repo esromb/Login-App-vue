@@ -118,7 +118,12 @@
                 </div>
             </div>
             <hr>
-            <div class="row"></div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md offset-3">
+                    <button class="btn btn-primary" 
+                    @click="submitted">Submit</button>
+                </div>
+            </div>
         </form>
     </div>
 </template>
@@ -144,8 +149,14 @@ export default {
             },
             levels: ['1','2','3','4'],
             gradeLevels: ['1','2','3','4'],
-            trainingStages: ['1','2','3','4']
+            trainingStages: ['1','2','3','4'],
+            isSubmitted: false
         }
     },
+    methods: {
+        submitted() {
+            this.isSubmitted = true;
+        }
+    }
 }
 </script>
