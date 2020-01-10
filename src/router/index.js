@@ -19,11 +19,6 @@ export default new Router({
       component: () => import('../views/About.vue')
     },
     {
-      path: '/event/:id',
-      name: 'eventSingle',
-      component: () => import('../views/EventS.vue')
-    },
-    {
       path: '/users',
       name: 'Users',
       component: () => import('../views/Users.vue')
