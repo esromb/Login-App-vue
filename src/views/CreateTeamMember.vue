@@ -117,6 +117,8 @@
                     </div>
                 </div>
             </div>
+            <hr>
+            <div class="row"></div>
         </form>
     </div>
 </template>
@@ -129,20 +131,20 @@ export default {
                 firstName: '',
                 lastName: '',
                 skillId: 0,
-                level: 0,
+                level: '',
                 roleId: 0,
                 location: '',
-                gradeLevel: 0,
+                gradeLevel: '',
                 memberStatus: '',
-                trainingStage: 0,
+                trainingStage: '',
                 domain: '',
                 comments: '',
                 employeeId: 0,
                 racfId: 0
             },
-            levels: [1,2,3,4],
-            gradeLevels: [1,2,3,4],
-            trainingStages: [1,2,3,4]
+            levels: ['1','2','3','4'],
+            gradeLevels: ['1','2','3','4'],
+            trainingStages: ['1','2','3','4']
         }
     },
 }
