@@ -75,13 +75,14 @@
                     </div>
                     <div class="form-group">
                         <label for="trainingStage">Training Stage</label>
-                        <input 
+                        <select 
                         type="text"
                         id="trainingStage"
                         class="form-control"
                         v-model="userData.trainingStage">
                         <option v-for="trainingStage in trainingStages"
                         v-bind:key="trainingStage">{{ trainingStage }}</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="domain">Domain</label>
@@ -135,17 +136,17 @@ export default {
             userData: {
                 firstName: '',
                 lastName: '',
-                skillId: 0,
+                skillId: null,
                 level: '',
-                roleId: 0,
+                roleId: null,
                 location: '',
                 gradeLevel: '',
                 memberStatus: '',
                 trainingStage: '',
                 domain: '',
                 comments: '',
-                employeeId: 0,
-                racfId: 0
+                employeeId: null,
+                racfId: null
             },
             levels: ['1','2','3','4'],
             gradeLevels: ['1','2','3','4'],
