@@ -18,10 +18,16 @@
     </div>
     <div class="navbar-end">
       <div class="navbar-item">
-        <div class="buttons">
+        <div v-if="logged" class="buttons">
           <a class="button is-dark" href="/">
             <strong>Logout</strong>
           </a>
+        </div>
+        <div v-if="!logged" class="buttons">
+         <router-link :to="'/login'">
+          <strong>Login</strong>
+        </router-link>
+
         </div>
       </div>
     </div>
