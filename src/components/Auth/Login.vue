@@ -4,6 +4,9 @@
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
+              <div v-if="error" >
+                  Username or password is wrong. Try again
+              </div>
             <h5 class="card-title text-center">Sign In</h5>
             <form class="form-signin">
               <div class="form-label-group">
@@ -17,9 +20,12 @@
               </div>
 
               
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" @click.prevent="login()">Sign in</button>
               <hr class="my-4">
-              <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up</button>
+               <router-link :to="'/signup'">
+                 <strong>Sign Up</strong>
+               </router-link>
+              
             </form>
           </div>
         </div>
@@ -30,7 +36,25 @@
 
 <script>
 export default {
-    
+    name: "login",
+    data: () => ({
+        username: "",
+        password: "",
+        error: false
+    }),
+    methods: {
+        login() {
+            this.$store.dispatch("LOGIN", {
+                _username: this.username,
+                _password: this.password
+            }).then(success => {
+                this.$router.push("/");
+            }) .catch(error => {
+             this.error = true;
+            });
+        }
+
+    }
 }
 </script>
 
