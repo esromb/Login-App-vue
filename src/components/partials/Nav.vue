@@ -18,7 +18,7 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div v-if="isUserLogin" class="buttons">
-          <a class="button is-dark" @click.prevent="logOut">
+          <a class="button is-dark logOut" @click.prevent="logOut">
             <strong>Logout</strong>
           </a>
         </div>
@@ -54,6 +54,9 @@ export default {
       &.router-link-exact-active {
         color: #d88d00;
       }
+    } .logOut {
+      color: white !important;
     }
+
   }
 </style>
