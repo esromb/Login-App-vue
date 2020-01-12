@@ -23,11 +23,13 @@
                     </div>
                     <div class="form-group">
                         <label for="skillId">Skill Id</label>
-                        <input 
-                        type="text"
+                        <select 
                         id="skillId"
                         class="form-control"
-                        v-model="userData.skillId">
+                        v-model="userData.skill">
+                        <option v-for="kill in allSkills" 
+                        v-bind:key="kill"  v-bind:value="kill.links[0].href">{{ kill.name }}</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="level">Level</label>
@@ -41,11 +43,13 @@
                     </div>
                     <div class="form-group">
                         <label for="RoleId">Role Id</label>
-                        <input 
-                        type="text"
-                        id="roleId"
+                        <select 
+                        id="RoleId"
                         class="form-control"
-                        v-model="userData.roleId">
+                        v-model="userData.role">
+                        <option v-for="role in allRoles" 
+                        v-bind:key="role.id"  v-bind:value="role.links[0].href">{{ role.id }}</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="location">Location</label>
@@ -122,7 +126,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md offset-3">
                     <button class="btn btn-primary" 
-                    @click="submitted">Submit</button>
+                    @click.prevent="submitted">Submit</button>
                 </div>
             </div>
         </form>
@@ -130,15 +134,16 @@
 </template>
 
 <script>
+import {mapGetters, mapActions}  from 'vuex';
 export default {
     data() {
         return {
             userData: {
-                firstName: '',
+                firsName: '',
                 lastName: '',
                 skillId: null,
                 level: '',
-                roleId: null,
+                role: null,
                 location: '',
                 gradeLevel: '',
                 memberStatus: '',
@@ -154,8 +159,38 @@ export default {
             isSubmitted: false
         }
     },
+    computed: mapGetters(['allSkills', 'allRoles']),
+    created() {
+        this.fetchSkills();
+        this.fetchRoles();
+    },
     methods: {
+        ...mapActions(['fetchSkills', 'fetchRoles']),
         submitted() {
+             this.$store.dispatch("addTeamMember", 
+                this.userData)
+            .then(() => {
+                this.error = false;
+                this.userData = {
+                    firstName: '',
+                    lastName: '',
+                    skillId: null,
+                    level: '',
+                    roleId: null,
+                    location: '',
+                    gradeLevel: '',
+                    memberStatus: '',
+                    trainingStage: '',
+                    domain: '',
+                    comments: '',
+                    employeeId: null,
+                    racfId: null
+                };
+            })
+            .catch(error => {
+                console.log(error);
+                this.error = true;
+            })
             this.isSubmitted = true;
         }
     }

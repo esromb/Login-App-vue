@@ -15,10 +15,10 @@
   <div v-if="isUserLogin"> 
 
      <router-link to="/addSkill" class="navbar-item">Add skill</router-link>
-     <router-link to="/Users" class="navbar-item">Add role</router-link>
-     <router-link to="/UserData" class="navbar-item">Add a team member</router-link>
-     <router-link to="/UserData" class="navbar-item">Request ESA</router-link>
-     <router-link to="/UserData" class="navbar-item">Request EBS</router-link>
+     <router-link to="/addRole" class="navbar-item">Add role</router-link>
+     <router-link to="/createTeamMember" class="navbar-item">Add a team member</router-link>
+     <router-link to="/createESA" class="navbar-item">Request ESA</router-link>
+     <router-link to="/createEBS" class="navbar-item">Request EBS</router-link>
 
   </div>
    <div v-if="!isUserLogin" class="buttons">

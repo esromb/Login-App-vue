@@ -3,10 +3,11 @@ const state =  {
     roles: []
 }
 const getters =  {
-    getRoles: state => state.roles
+    allRoles: state => state.roles
 }
 const mutations = {
-    addRoles: (state, role) => (state.roles.push(role))
+    addRoles: (state, role) => (state.roles.push(role)),
+    fetchRoles:  (state, roles) => (state.roles = roles)
 }
 
 const actions = {
@@ -26,21 +27,9 @@ const actions = {
         });
 
     },
-    fetchRoles: ({commit}) => {
-        return new Promise((resolve, reject) => {
-            axios.get('roles')
-            .then(({data, status}) => {
-                if (status === 201) {
-                    console.log(data);
-                    commit('addRoles', data);
-                    resolve(true);
-                }
-            }).catch(error => {
-                reject(error);
-            })
-
-        });
-
+    async fetchRoles({commit}) {
+        const response = await axios.get('roles');
+        commit('fetchRoles', response.data['content']);
     }
 
 }

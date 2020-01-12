@@ -13,10 +13,13 @@ const actions = {
     LOGIN: ({commit}, payload) => {
         return new Promise((resolve, reject) => {
             axios.post('login', payload)
-            .then(({ status}) => {
-                if (status === 200) {
+            .then(({ data, status}) => {
+                console.log(data);
+                if (status === 200 && data == 'SUCCESS') {
                     commit('setUserLogin', true);
                     resolve(true);
+                } else {
+                    reject({});
                 }
             }).catch(error => {
                 reject(error);

@@ -32,9 +32,15 @@ export default new Router({
       meta: { requiresLogin: true }
     },
     {
-      path: '/userData',
-      name: 'UserData',
+      path: '/createTeamMember',
+      name: 'CreateTeamMember',
       component: () => import('../views/CreateTeamMember.vue'),
+      meta: { requiresLogin: true }
+    },
+    {
+      path: '/createESA',
+      name: 'CreateESA',
+      component: () => import('../views/ESA.vue'),
       meta: { requiresLogin: true }
     },
     {

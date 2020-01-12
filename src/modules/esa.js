@@ -1,23 +1,23 @@
 import axios from 'axios';
 const state =  {
-    skills: []
+    esas: []
 }
 const getters =  {
-    allSkills: state => state.skills
+    allESAs: state => state.esas
 }
 const mutations = {
-    addSkills: (state, skill) => (state.skills.push(skill)),
-    fetchSkills: (state, skills) => (state.skills = skills)
+    addESA: (state, esa) => (state.esas.push(esa)),
+    fetchESAs:  (state, esas) => (state.esas = esas)
 }
 
 const actions = {
-     ADDSKILL: ({commit}, payload) => {
+    addESA: ({commit}, payload) => {
         return new Promise((resolve, reject) => {
-            axios.post('skills', payload)
+            axios.post('esas', payload)
             .then(({data, status}) => {
                 if (status === 201) {
                     console.log(data);
-                    commit('addSkills', data);
+                    commit('addESA', data);
                     resolve(true);
                 }
             }).catch(error => {
@@ -27,10 +27,9 @@ const actions = {
         });
 
     },
-    async fetchSkills({commit}) {
-        const response = await axios.get('skills');
-        commit('fetchSkills', response.data['content']);
-
+    async fetchESAs({commit}) {
+        const response = await axios.get('esas');
+        commit('fetchESAs', response.data['content']);
     }
 
 }
