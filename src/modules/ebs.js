@@ -28,7 +28,7 @@ const actions = {
 
     },
     async fetchEBSes({commit}) {
-        const response = await axios.get('esas');
+        const response = await axios.get('ebses');
         commit('fetchEBSes', response.data['content']);
     }
 

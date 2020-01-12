@@ -44,6 +44,12 @@ export default new Router({
       meta: { requiresLogin: true }
     },
     {
+      path: '/createEBS',
+      name: 'CreateEBS',
+      component: () => import('../views/EBS.vue'),
+      meta: { requiresLogin: true }
+    },
+    {
       path: '/login',
       name: 'Login',
       component: () => import('../components/Auth/Login.vue')

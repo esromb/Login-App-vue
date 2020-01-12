@@ -40,6 +40,42 @@
                         class="form-control"
                         v-model="userData.racfId">
                     </div>
+                    <div class="form-group">
+                        <label for="racfId">Submitted Date</label>
+                        <datepicker v-model="userData.submittedDate" format="MM/dd/yyyy"></datepicker>
+                    </div>
+                    <div class="form-group">
+                        <label for="racfId">Start Date</label>
+                        <datepicker v-model="userData.startDate" format="MM/dd/yyyy"></datepicker>
+                    </div>
+                     <div class="form-group">
+                        <label for="racfId">Confirm Date</label>
+                        <datepicker v-model="userData.confirmDate" format="MM/dd/yyyy"></datepicker>
+                    </div>
+                     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md offset-3 form-group">
+                        <label for="batch">
+                            <input 
+                            type="checkbox"
+                            id="batch"
+                            v-model="userData.hasBadge"> Has batch ?
+                        </label>
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md offset-3 form-group">
+                        <label for="hasLaptop">
+                            <input 
+                            type="checkbox"
+                            id="hasLaptop"
+                            v-model="userData.hasLaptop"> Has LAPTOP ?
+                        </label>
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md offset-3 form-group">
+                        <label for="orientation">
+                            <input 
+                            type="checkbox"
+                            id="orientation"
+                            v-model="userData.orientation"> Took  a Orientation?
+                        </label>
+                    </div>
                 </div>
             </div>
             <hr>
