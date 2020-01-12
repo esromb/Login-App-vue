@@ -12,13 +12,26 @@
       </div>
     </div>
   </section>
-      <router-link to="/Users" class="navbar-item">Users</router-link>
-      <router-link to="/UserData" class="navbar-item">Add a team member</router-link>
+  <div v-if="isUserLogin"> 
+
+     <router-link to="/Users" class="navbar-item">Add skill</router-link>
+     <router-link to="/Users" class="navbar-item">Add role</router-link>
+     <router-link to="/UserData" class="navbar-item">Add a team member</router-link>
+     <router-link to="/UserData" class="navbar-item">Request ESA</router-link>
+     <router-link to="/UserData" class="navbar-item">Request EBS</router-link>
+
+  </div>
+   <div v-if="!isUserLogin" class="buttons">
+      PLEASE LOGIN TO ACCESS THIS SITE
+   </div>
+      
 </div>
 </template>
 <script>
+import {mapGetters} from 'vuex';
 export default {
   name: 'home',
+   computed: mapGetters(['isUserLogin']),
   components: {
     
   }

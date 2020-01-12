@@ -27,6 +27,16 @@ export default new Router({
       path: '/userData',
       name: 'UserData',
       component: () => import('../views/CreateTeamMember.vue')
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: () => import('../components/Auth/Login.vue')
+    },
+    {
+      path: '/signup',
+      name: 'Signup',
+      component: () => import('../components/Auth/SignUp.vue')
     }
   ]
 })

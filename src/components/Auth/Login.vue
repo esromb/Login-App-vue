@@ -38,24 +38,28 @@
 export default {
     name: "login",
     data: () => ({
-        username: "",
-        password: "",
+        username: '',
+        password: '',
         error: false
     }),
     methods: {
         login() {
+            console.log("login clicked");
             this.$store.dispatch("LOGIN", {
-                _username: this.username,
-                _password: this.password
-            }).then(success => {
+                username: this.username,
+                password: this.password
+            })
+            .then(() => {
+                this.$store.state.userLoggedIn = true;
                 this.$router.push("/");
-            }) .catch(error => {
-             this.error = true;
-            });
+            })
+            .catch(() => {
+                this.error = true;
+            })
         }
 
     }
-}
+};
 </script>
 
 <style scoped>

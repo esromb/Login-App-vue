@@ -17,12 +17,12 @@
     </div>
     <div class="navbar-end">
       <div class="navbar-item">
-        <div v-if="logged" class="buttons">
-          <a class="button is-dark" href="/">
+        <div v-if="isUserLogin" class="buttons">
+          <a class="button is-dark" @click.prevent="logOut">
             <strong>Logout</strong>
           </a>
         </div>
-        <div v-if="!logged" class="buttons">
+      <div v-if="!isUserLogin" class="buttons">
          <router-link :to="'/login'">
           <strong>Login</strong>
         </router-link>
@@ -34,8 +34,14 @@
 </nav>
 </template>
 <script>
+import {mapGetters, mapActions} from 'vuex';
+
 export default {
-    name: 'Nav'
+    name: 'Nav',
+    computed: mapGetters(['isUserLogin']),
+    methods: {
+       ...mapActions(['logOut'])
+    }
 }
 </script>
 <style lang="scss" scoped>
