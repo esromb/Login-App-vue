@@ -14,7 +14,7 @@
   </section>
   <div v-if="isUserLogin"> 
 
-     <router-link to="/Users" class="navbar-item">Add skill</router-link>
+     <router-link to="/addSkill" class="navbar-item">Add skill</router-link>
      <router-link to="/Users" class="navbar-item">Add role</router-link>
      <router-link to="/UserData" class="navbar-item">Add a team member</router-link>
      <router-link to="/UserData" class="navbar-item">Request ESA</router-link>

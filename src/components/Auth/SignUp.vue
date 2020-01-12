@@ -46,7 +46,6 @@ export default {
     }),
     methods: {
         signUp() {
-            console.log("login clicked");
             this.$store.dispatch("SIGNUP", {
                 name: this.name,
                 username: this.username,

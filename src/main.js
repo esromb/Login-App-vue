@@ -8,7 +8,16 @@ import axios from 'axios';
 Vue.config.productionTip = false
 
 axios.defaults.baseURL = 'http://localhost:8080/warmup/';
-
+axios.defaults.timeout = 180000;
+router.beforeEach((to, from, next) => {
+  console.log(store);
+  if (to.matched.some(record => record.meta.requiresLogin) && !store.getters.isUserLogin) {
+      // You can use store variable here to access globalError or commit mutation 
+      next("/login")
+  } else {
+      next()
+  }
+})
 //Vue instance
 new Vue({
   router,
