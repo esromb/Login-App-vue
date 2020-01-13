@@ -21,24 +21,24 @@
      <router-link to="/createEBS" class="navbar-item">Request EBS</router-link>
      <div>
             TEAM MEMBERS
-    <table v-if="allTeamMembers && allTeamMembers.length > 0">
+    <table  class="table table.bordered" v-if="allTeamMembers && allTeamMembers.length > 0">
       
           <thead>
-            <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Level</th>
-              <th>Grade Level</th>
-              <th>Location</th>
-              <th>Member Status</th>
-              <th>Training Stage</th>
-              <th>Domain</th>
-              <th>Comments</th>
-               <th>Employee Id</th>
-                <th>RacfID</th>
+            <tr scope="row">
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Level</th>
+              <th scope="col">Grade Level</th>
+              <th scope="col">Location</th>
+              <th scope="col">Member Status</th>
+              <th scope="col">Training Stage</th>
+              <th scope="col">Domain</th>
+              <th scope="col">Comments</th>
+              <th scope="col">Employee Id</th>
+              <th scope="col">RacfID</th>
             </tr>
           </thead>
-          <tr v-for="member in allTeamMembers" v-bind:key="member.id">
+          <tr scope="row" v-for="member in allTeamMembers" v-bind:key="member.id">
               <td>{{member.firstName}}</td>
               <td>{{member.lastName}}</td>
               <td>{{member.level}}</td>
