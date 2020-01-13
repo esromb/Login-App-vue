@@ -27,8 +27,8 @@
                         id="skillId"
                         class="form-control"
                         v-model="userData.skill">
-                        <option v-for="kill in allSkills" 
-                        v-bind:key="kill"  v-bind:value="kill.links[0].href">{{ kill.name }}</option>
+                        <option v-for="skill in allSkills" 
+                        v-bind:key="skill"  v-bind:value="skill.links[0].href">{{ skill.name }}</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -53,11 +53,13 @@
                     </div>
                     <div class="form-group">
                         <label for="location">Location</label>
-                        <input 
-                        type="text"
+                        <select 
                         id="location"
                         class="form-control"
-                        v-model="userData.location">
+                        v-model="roleData.location">
+                        <option v-for="location in locations"
+                        v-bind:key="location">{{ location }}</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="gradeLeve">Grade Level</label>
@@ -144,7 +146,6 @@ export default {
                 skillId: null,
                 level: '',
                 role: null,
-                location: '',
                 gradeLevel: '',
                 memberStatus: '',
                 trainingStage: '',
@@ -156,6 +157,7 @@ export default {
             levels: ['1','2','3','4'],
             gradeLevels: ['1','2','3','4'],
             trainingStages: ['1','2','3','4'],
+            locations: ['ATL', 'NYC', 'India'],
             isSubmitted: false
         }
     },
