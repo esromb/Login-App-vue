@@ -19,6 +19,41 @@
      <router-link to="/createTeamMember" class="navbar-item">Add a team member</router-link>
      <router-link to="/createESA" class="navbar-item">Request ESA</router-link>
      <router-link to="/createEBS" class="navbar-item">Request EBS</router-link>
+     <div>
+            TEAM MEMBERS
+    <table v-if="allTeamMembers && allTeamMembers.length > 0">
+      
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Level</th>
+              <th>Grade Level</th>
+              <th>Location</th>
+              <th>Member Status</th>
+              <th>Training Stage</th>
+              <th>Domain</th>
+              <th>Comments</th>
+               <th>Employee Id</th>
+                <th>RacfID</th>
+            </tr>
+          </thead>
+          <tr v-for="member in allTeamMembers" v-bind:key="member.id">
+              <td>{{member.firstName}}</td>
+              <td>{{member.lastName}}</td>
+              <td>{{member.level}}</td>
+              <td>{{member.gradeLevel}}</td>
+              <td>{{member.location}}</td>
+              <td>{{member.memberStatus}}</td>
+              <td>{{member.trainingStage}}</td>
+              <td>{{member.domain}}</td>
+              <td>{{member.comments}}</td>
+              <td>{{member.employeeId}}</td>
+              <td>{{member.racfId}}</td>
+          </tr>
+     </table>
+
+     </div>
 
   </div>
    <div v-if="!isUserLogin" class="buttons">
@@ -28,10 +63,16 @@
 </div>
 </template>
 <script>
-import {mapGetters} from 'vuex';
+import {mapGetters, mapActions} from 'vuex';
 export default {
   name: 'home',
-   computed: mapGetters(['isUserLogin']),
+  created() {
+      this.fetchTeamMembers();
+  },
+  methods: {
+  ...mapActions(['fetchTeamMembers']),
+  },
+   computed: mapGetters(['isUserLogin', 'allTeamMembers']),
   components: {
     
   }
