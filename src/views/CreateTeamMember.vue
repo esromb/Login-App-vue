@@ -56,7 +56,7 @@
                         <select 
                         id="location"
                         class="form-control"
-                        v-model="roleData.location">
+                        v-model="userData.location">
                         <option v-for="location in locations"
                         v-bind:key="location">{{ location }}</option>
                         </select>
@@ -149,6 +149,7 @@ export default {
                 gradeLevel: '',
                 memberStatus: '',
                 trainingStage: '',
+                location: '',
                 domain: '',
                 comments: '',
                 employeeId: null,
