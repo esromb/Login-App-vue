@@ -38,6 +38,12 @@ export default new Router({
       meta: { requiresLogin: true }
     },
     {
+      path: '/editTeamMember/:id',
+      name: 'editTeamMember',
+      component: () => import('../views/CreateTeamMember.vue'),
+      meta: { requiresLogin: true }
+    },
+    {
       path: '/createESA',
       name: 'CreateESA',
       component: () => import('../views/ESA.vue'),

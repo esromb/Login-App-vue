@@ -27,8 +27,8 @@
                         id="skillId"
                         class="form-control"
                         v-model="userData.skill">
-                        <option v-for="skill in allSkills" 
-                        v-bind:key="skill"  v-bind:value="skill.links[0].href">{{ skill.name }}</option>
+                        <option v-for="(skill, index) in allSkills"
+                        v-bind:key="index"  v-bind:value="skill.links[0].href">{{ skill.name }}</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -159,18 +159,55 @@ export default {
             gradeLevels: ['1','2','3','4'],
             trainingStages: ['1','2','3','4'],
             locations: ['ATL', 'NYC', 'India'],
-            isSubmitted: false
+            isSubmitted: false,
+            edit: false
         }
     },
-    computed: mapGetters(['allSkills', 'allRoles']),
+    computed: mapGetters(['allSkills', 'allRoles', 'allTeamMembers']),
     created() {
         this.fetchSkills();
         this.fetchRoles();
+        var id = this.$route.params.id;
+        console.log("####id", id);
+        if (id) {
+            var teams = this.allTeamMembers.filter(team => id == team.id);
+            if (teams && teams.length > 0 ){
+            
+
+                this.userData = teams[0];
+                console.log(teams[0]);
+                //get skill id
+                const skillLink = this.userData.links.filter(link => link.rel == 'skill')[0].href;
+                var startIndex = skillLink.indexOf("teamMembers") + 12;
+                var endIndex = skillLink.indexOf('/skill');
+                var skillId = skillLink.substring(startIndex, endIndex);
+                var skills = this.allSkills.filter(skill => skill.id == skillId);
+                if (skills && skills.length > 0){
+                    console.log(skills[0]);
+                   this.userData.skill = skills[0].links[0].href; 
+                }
+
+                const roleLink = this.userData.links.filter(link => link.rel == 'role')[0].href;
+                 startIndex = roleLink.indexOf("teamMembers") + 12;
+                 endIndex = roleLink.indexOf('/role');
+                var roleId = roleLink.substring(startIndex, endIndex);
+                var roles = this.allRoles.filter(role => role.id == roleId);
+                if (roles && roles.length > 0){
+                    console.log(roles[0]);
+                   this.userData.role = roles[0].links[0].href; 
+                }
+                this.edit = true;
+            }
+
+        }
     },
     methods: {
         ...mapActions(['fetchSkills', 'fetchRoles']),
         submitted() {
-             this.$store.dispatch("addTeamMember", 
+
+            if (this.edit) {
+
+                 this.$store.dispatch("updateTeamMember", 
                 this.userData)
             .then(() => {
                 this.error = false;
@@ -195,6 +232,34 @@ export default {
                 this.error = true;
             })
             this.isSubmitted = true;
+            } else {
+                this.$store.dispatch("addTeamMember", 
+                this.userData)
+            .then(() => {
+                this.error = false;
+                this.userData = {
+                    firstName: '',
+                    lastName: '',
+                    skillId: null,
+                    level: '',
+                    roleId: null,
+                    location: '',
+                    gradeLevel: '',
+                    memberStatus: '',
+                    trainingStage: '',
+                    domain: '',
+                    comments: '',
+                    employeeId: null,
+                    racfId: null
+                };
+            })
+            .catch(error => {
+                console.log(error);
+                this.error = true;
+            })
+            this.isSubmitted = true;
+            }
+             
         }
     }
 }

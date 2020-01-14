@@ -24,6 +24,7 @@
     <table  class="table table.bordered" v-if="allTeamMembers && allTeamMembers.length > 0">
       
           <thead>
+
             <tr scope="row">
               <th scope="col">First Name</th>
               <th scope="col">Last Name</th>
@@ -50,6 +51,7 @@
               <td>{{member.comments}}</td>
               <td>{{member.employeeId}}</td>
               <td>{{member.racfId}}</td>
+              <td><router-link :id="member.id" :to="'/editTeamMember/' + member.id" class="navbar-item">Edit</router-link></td>
           </tr>
      </table>
 

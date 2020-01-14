@@ -27,6 +27,21 @@ const actions = {
         });
 
     },
+    updateTeamMember: ({commit}, payload) => {
+        return new Promise((resolve, reject) => {
+            axios.put('teamMembers/' + payload.id, payload)
+            .then(({data, status}) => {
+                if (status === 204) {
+                    console.log(data);
+                    commit('addTeamMembers', data);
+                    resolve(true);
+                }
+            }).catch(error => {
+                reject(error);
+            })
+
+        });
+    },
     async fetchTeamMembers({commit}) {
         const response = await axios.get('teamMembers');
         commit('fetchTeamMembers', response.data['content']);
