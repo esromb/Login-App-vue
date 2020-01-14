@@ -55,6 +55,30 @@
           </tr>
      </table>
 
+     <div>
+            ESA
+    <table  class="table table-bordered" v-if="allESAs && allESAs.length > 0">
+      
+          <thead>
+
+            <tr scope="row">
+              <th scope="col">ESA status</th>
+              <th scope="col">Allocation Date</th>
+              <th scope="col">comments</th>
+              <th scope="col">Team member Name</th>
+            </tr>
+          </thead>
+          <tr scope="row" v-for="esa in allESAs" v-bind:key="esa.id">
+              <td>{{esa.esaStatus}}</td>
+              <td>{{esa.allocationDate}}</td>
+              <td>{{esa.comments}}</td>
+               <td>{{esa.teamMember.firstName}}{{esa.teamMember.LastName}}</td>
+              <td><router-link :id="esa.id" :to="'/editTeamMember/' + esa.id" class="navbar-item">Edit</router-link></td>
+          </tr>
+     </table>
+
+     </div>
+
      </div>
 
   </div>
@@ -70,11 +94,15 @@ export default {
   name: 'home',
   created() {
       this.fetchTeamMembers();
+      this.fetchESAs();
   },
   methods: {
-  ...mapActions(['fetchTeamMembers']),
+  ...mapActions(['fetchTeamMembers', 'fetchESAs']),
   },
-   computed: mapGetters(['isUserLogin', 'allTeamMembers']),
+   computed: {
+     ...mapGetters(['isUserLogin', 'allTeamMembers', 'allESAs'])
+     
+     },
   components: {
     
   }
