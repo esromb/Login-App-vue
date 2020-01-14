@@ -21,7 +21,7 @@
      <router-link to="/createEBS" class="navbar-item">Request EBS</router-link>
      <div>
             TEAM MEMBERS
-    <table  class="table table.bordered" v-if="allTeamMembers && allTeamMembers.length > 0">
+    <table  class="table table-bordered" v-if="allTeamMembers && allTeamMembers.length > 0">
       
           <thead>
             <tr scope="row">
