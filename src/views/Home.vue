@@ -13,7 +13,9 @@
     </div>
   </section>
   <div v-if="isUserLogin"> 
-
+    <a href="http://localhost:8080/warmup/export" download>
+      Export
+    </a>
      <router-link to="/addSkill" class="navbar-item">Add skill</router-link>
      <router-link to="/addRole" class="navbar-item">Add role</router-link>
      <router-link to="/createTeamMember" class="navbar-item">Add a team member</router-link>
