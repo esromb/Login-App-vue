@@ -23,7 +23,7 @@
      <router-link to="/createEBS" class="navbar-item">Request EBS</router-link>
      <div>
             TEAM MEMBERS
-    <table  class="table table-bordered" v-if="allTeamMembers && allTeamMembers.length > 0">
+    <table  class="table table-bordered" v-if="allTeamMembers !== null && allTeamMembers.length > 0">
       
           <thead>
 
@@ -42,7 +42,7 @@
             </tr>
           </thead>
           <tr scope="row" v-for="member in allTeamMembers" v-bind:key="member.id">
-              <td>{{member.firstName}}</td>
+              <td v-if="member !== null">{{member.firstName}}</td>
               <td>{{member.lastName}}</td>
               <td>{{member.level}}</td>
               <td>{{member.gradeLevel}}</td>
@@ -59,7 +59,7 @@
 
      <div>
             ESA
-    <table  class="table table-bordered" v-if="allESAs && allESAs.length > 0">
+    <table  class="table table-bordered" v-if="allESAs !== null && allESAs.length > 0">
       
           <thead>
 
@@ -74,7 +74,7 @@
               <td>{{esa.esaStatus}}</td>
               <td>{{esa.allocationDate}}</td>
               <td>{{esa.comments}}</td>
-               <td>{{esa.teamMember.firstName}}{{esa.teamMember.LastName}}</td>
+               <td v-if="esa !== null && esa.teamMember !== null">{{esa.teamMember.firstName}}{{esa.teamMember.LastName}}</td>
               <td><router-link :id="esa.id" :to="'/editTeamMember/' + esa.id" class="navbar-item">Edit</router-link></td>
           </tr>
      </table>

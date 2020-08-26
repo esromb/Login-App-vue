@@ -29,7 +29,8 @@ const actions = {
     },
     async fetchESAs({commit}) {
         const response = await axios.get('esas');
-        commit('fetchESAs', response.data['content']);
+        const data = (response.data['page']['totalElements'] > 0) ? response.data['content']: [];
+        commit('fetchESAs', data);
     }
 
 }

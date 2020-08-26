@@ -44,7 +44,8 @@ const actions = {
     },
     async fetchTeamMembers({commit}) {
         const response = await axios.get('teamMembers');
-        commit('fetchTeamMembers', response.data['content']);
+        const data = (response.data['page']['totalElements'] > 0) ? response.data['content']: [];
+        commit('fetchTeamMembers', data);
     }
 
 }
